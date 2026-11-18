@@ -14,7 +14,7 @@ import {
 import type { MapPin as MapPinType, PinCategory, Vehicle, ViewTab } from '../types';
 import { categoryMeta } from '../utils';
 import { AdSlot } from './AdSlot';
-import { MAP_IMAGE_URL } from '../mockData';
+import { LeonidaMap } from './LeonidaMap';
 
 interface MapViewProps {
   pins: MapPinType[];
@@ -291,24 +291,10 @@ export function MapView({
               transition: dragging ? 'none' : 'transform 0.25s ease-out',
             }}
           >
-            <div className="relative h-[68vh] w-[120vh] max-w-[1400px]">
-              <img
-                src={MAP_IMAGE_URL}
-                alt="Leonida interactive map"
-                className="absolute inset-0 h-full w-full rounded-lg object-cover shadow-[0_0_40px_rgba(0,0,0,0.6)]"
-                draggable={false}
-              />
-              {/* grid overlay for map aesthetic */}
-              <div
-                className="absolute inset-0 rounded-lg opacity-30 mix-blend-overlay"
-                style={{
-                  backgroundImage:
-                    'linear-gradient(rgba(0,240,255,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(0,240,255,0.15) 1px, transparent 1px)',
-                  backgroundSize: '40px 40px',
-                }}
-              />
-              {/* neon border */}
-              <div className="pointer-events-none absolute inset-0 rounded-lg ring-1 ring-cyan-neon/30" />
+            <div className="relative aspect-[4/3] w-full max-w-[1400px]">
+              <div className="absolute inset-0 overflow-hidden rounded-lg shadow-[0_0_40px_rgba(0,0,0,0.6)] ring-1 ring-cyan-neon/30">
+                <LeonidaMap />
+              </div>
 
               {/* Pins */}
               {pins.map((p) => {
