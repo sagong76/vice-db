@@ -6,7 +6,8 @@ function LeonidaMapBase() {
       src="/images/map/leonida-map.svg"
       alt="Interactive map of GTA 6 Leonida"
       draggable={false}
-      className="absolute inset-0 h-full w-full select-none pointer-events-none"
+      style={{ width: '100%', height: '100%', objectFit: 'fill' }}
+      className="absolute inset-0 block select-none pointer-events-none"
     />
   );
 }
