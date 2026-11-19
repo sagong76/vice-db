@@ -291,8 +291,8 @@ export function MapView({
               transition: dragging ? 'none' : 'transform 0.25s ease-out',
             }}
           >
-            <div className="relative aspect-[4/3] w-full max-w-[1400px]">
-              <div className="absolute inset-0 overflow-hidden rounded-lg shadow-[0_0_40px_rgba(0,0,0,0.6)] ring-1 ring-cyan-neon/30">
+            <div className="relative w-[1000px]">
+              <div className="overflow-hidden rounded-lg bg-[#d8e2ec] shadow-[0_0_40px_rgba(0,0,0,0.6)] ring-1 ring-cyan-neon/30">
                 <LeonidaMap />
               </div>
 
