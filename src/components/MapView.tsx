@@ -2,7 +2,7 @@ import { useCallback, useMemo, useRef, useState } from 'react';
 import {
   Check,
   ChevronRight,
-  Gift,
+  Filter,
   MapPin,
   Minus,
   Plus,
@@ -40,7 +40,6 @@ export function MapView({
   onToggleFound,
   globalSearch,
   onSelectVehicle,
-  onSwitchTab,
   focusPinId,
   onClearFocus,
 }: MapViewProps) {
@@ -52,6 +51,7 @@ export function MapView({
   const [pan, setPan] = useState({ x: 0, y: 0 });
   const [dragging, setDragging] = useState(false);
   const [selected, setSelected] = useState<MapPinType | null>(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const dragStart = useRef<{ x: number; y: number; px: number; py: number } | null>(null);
 
   const vehicleById = useMemo(() => {
@@ -118,19 +118,18 @@ export function MapView({
 
   const zoomBy = (d: number) => setZoom((z) => Math.min(MAX_ZOOM, Math.max(MIN_ZOOM, z + d)));
 
-  // Focus a specific pin (from external navigation)
+  // Focus a specific pin
   const focusPin = useMemo(() => pins.find((p) => p.pin_id === focusPinId) ?? null, [pins, focusPinId]);
   const onCenterPin = useCallback(
     (pin: MapPinType) => {
       setZoom(2.2);
-      // center the pin: pan so that the pin at (map_x%, map_y%) sits in the middle
       setPan({ x: -(pin.map_x - 50) * 4, y: -(pin.map_y - 50) * 4 });
       setSelected(pin);
+      setMobileMenuOpen(false);
     },
     [],
   );
 
-  // Apply focus when focusPinId changes
   if (focusPin && (!selected || selected.pin_id !== focusPin.pin_id)) {
     onCenterPin(focusPin);
     onClearFocus();
@@ -140,11 +139,39 @@ export function MapView({
 
   return (
     <div
-      className="flex w-full overflow-hidden border-t border-ink-700 bg-ink-950"
-      style={{ height: 'calc(100vh - 56px - 41px)' }}
+      className="relative flex w-full overflow-hidden border-t border-ink-700 bg-ink-950"
+      style={{ height: 'calc(100dvh - 97px)', minHeight: '480px' }}
     >
-      {/* Sidebar */}
-      <aside className="flex w-[320px] shrink-0 flex-col border-r border-ink-600 bg-ink-900 md:flex">
+      {/* Mobile backdrop */}
+      {mobileMenuOpen && (
+        <div
+          onClick={() => setMobileMenuOpen(false)}
+          className="fixed inset-0 z-30 bg-black/60 backdrop-blur-xs md:hidden"
+        />
+      )}
+
+      {/* Sidebar (Drawer on mobile, fixed sidebar on desktop) */}
+      <aside
+        className={`${
+          mobileMenuOpen
+            ? 'fixed inset-y-0 left-0 z-40 flex w-[85vw] max-w-[320px] shadow-2xl'
+            : 'hidden'
+        } shrink-0 flex-col border-r border-ink-600 bg-ink-900 md:static md:z-auto md:flex md:w-[320px] md:shadow-none`}
+      >
+        {/* Mobile drawer header */}
+        <div className="flex items-center justify-between border-b border-ink-700 px-3 py-2.5 md:hidden">
+          <span className="text-xs font-semibold uppercase tracking-widest text-cyan-neon">
+            Filters &amp; Pins
+          </span>
+          <button
+            onClick={() => setMobileMenuOpen(false)}
+            className="rounded-lg p-1.5 text-ink-300 transition hover:bg-ink-800 hover:text-white"
+            aria-label="Close menu"
+          >
+            <X className="h-4 w-4" />
+          </button>
+        </div>
+
         <div className="flex-1 overflow-y-auto scrollbar-thin p-3">
           {/* Search */}
           <div className="relative mb-3">
@@ -275,7 +302,7 @@ export function MapView({
       {/* Map canvas */}
       <div className="relative flex-1 overflow-hidden bg-ink-950">
         <div
-          className="absolute inset-0 cursor-grab no-select"
+          className="absolute inset-0 cursor-grab no-select touch-none"
           onPointerDown={onPointerDown}
           onPointerMove={onPointerMove}
           onPointerUp={onPointerUp}
@@ -291,8 +318,8 @@ export function MapView({
               transition: dragging ? 'none' : 'transform 0.25s ease-out',
             }}
           >
-            <div className="relative w-[1000px]">
-              <div className="overflow-hidden rounded-lg bg-[#d8e2ec] shadow-[0_0_40px_rgba(0,0,0,0.6)] ring-1 ring-cyan-neon/30">
+            <div className="relative w-[600px] md:w-[1000px]">
+              <div className="overflow-hidden rounded-lg bg-ink-900 shadow-[0_0_40px_rgba(0,0,0,0.6)] ring-1 ring-cyan-neon/30">
                 <LeonidaMap />
               </div>
 
@@ -342,6 +369,22 @@ export function MapView({
           </div>
         </div>
 
+        {/* Top-left controls (Mobile Filter Button + Zoom indicator) */}
+        <div className="absolute left-3 top-3 z-20 flex items-center gap-2">
+          <button
+            onClick={() => setMobileMenuOpen(true)}
+            className="flex items-center gap-1.5 rounded-lg border border-cyan-neon/50 bg-ink-850/95 px-3 py-1.5 text-xs font-semibold text-white shadow-lg backdrop-blur transition hover:bg-ink-700 md:hidden"
+          >
+            <Filter className="h-3.5 w-3.5 text-cyan-neon" />
+            <span>Filters ({filteredPins.length})</span>
+          </button>
+
+          <div className="flex items-center gap-1.5 rounded-lg border border-ink-600 bg-ink-850/90 px-2.5 py-1.5 text-xs text-ink-200 backdrop-blur">
+            <ZoomIn className="h-3.5 w-3.5 text-cyan-neon" />
+            {zoom.toFixed(1)}x
+          </div>
+        </div>
+
         {/* Zoom controls */}
         <div className="absolute right-3 top-3 z-20 flex flex-col gap-1">
           <button
@@ -370,15 +413,9 @@ export function MapView({
           </button>
         </div>
 
-        {/* Zoom indicator */}
-        <div className="absolute left-3 top-3 z-20 flex items-center gap-1.5 rounded-lg border border-ink-600 bg-ink-850/90 px-3 py-1.5 text-xs text-ink-200 backdrop-blur">
-          <ZoomIn className="h-3.5 w-3.5 text-cyan-neon" />
-          {zoom.toFixed(1)}x
-        </div>
-
         {/* Popover card */}
         {selected && (
-          <div className="absolute left-1/2 top-4 z-30 w-[330px] max-w-[calc(100%-2rem)] -translate-x-1/2 animate-slideUp">
+          <div className="absolute left-1/2 top-14 z-30 w-[330px] max-w-[calc(100%-1.5rem)] -translate-x-1/2 animate-slideUp md:top-4">
             <div className="rounded-xl border border-ink-600 bg-ink-800/95 p-4 shadow-card backdrop-blur-md">
               <div className="mb-2 flex items-start justify-between gap-2">
                 <div className="min-w-0">
@@ -448,7 +485,7 @@ export function MapView({
         )}
 
         {/* Floating bottom leaderboard ad */}
-        <div className="pointer-events-none absolute bottom-3 left-1/2 z-20 -translate-x-1/2">
+        <div className="pointer-events-none absolute bottom-2 left-1/2 z-20 flex w-[calc(100%-1rem)] max-w-[728px] -translate-x-1/2 justify-center">
           <AdSlot variant="leaderboard" label="Sponsored" />
         </div>
       </div>
