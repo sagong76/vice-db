@@ -1,103 +1,59 @@
-import { memo, useState } from 'react';
-import { Shield, FileText, Cookie, Mail, Github } from 'lucide-react';
-import type { LegalPage } from './LegalModal';
+import React from 'react';
 
-interface FooterProps {
-  onOpenLegal: (page: LegalPage) => void;
-}
-
-const LINKS: { page: LegalPage; label: string; icon: typeof Shield }[] = [
-  { page: 'privacy', label: 'Privacy Policy', icon: Shield },
-  { page: 'terms', label: 'Terms of Service', icon: FileText },
-  { page: 'cookie', label: 'Cookie Notice', icon: Cookie },
-  { page: 'contact', label: 'Contact Us', icon: Mail },
-];
-
-function FooterBase({ onOpenLegal }: FooterProps) {
-  const [year] = useState(() => new Date().getFullYear());
-
+export function Footer() {
   return (
-    <footer className="border-t border-ink-700 bg-ink-950 px-5 py-8">
-      <div className="mx-auto flex max-w-[1400px] flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
-        {/* Brand */}
-        <div className="max-w-sm">
-          <p className="font-display text-lg font-bold text-white">
-            VICE<span className="text-pink-neon">.</span>DB
+    <footer className="bg-[#0b0e14] border-t border-[#262f45] text-[#94a3b8] text-xs py-6 px-4 mt-auto">
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="text-center md:text-left max-w-3xl leading-relaxed">
+          <p className="text-slate-300 font-medium mb-1">
+            © 2026 VICE.DB (gta6vicedb.com). All rights reserved.
           </p>
-          <p className="mt-1 text-xs leading-relaxed text-ink-300">
-            The unofficial GTA 6 interactive map and vehicle database. Explore Leonida, find free cars
-            and collectibles, and compare every vehicle's specs in one place.
-          </p>
-          <p className="mt-3 text-[11px] text-ink-400">
-            Fan-made project. Not affiliated with Rockstar Games or Take-Two Interactive. All vehicle
-            names and trademarks belong to their respective owners.
-          </p>
-        </div>
-
-        {/* Legal links */}
-        <div className="flex flex-col gap-3">
-          <h3 className="text-[11px] font-semibold uppercase tracking-widest text-ink-200">Legal</h3>
-          <nav className="flex flex-col gap-2">
-            {LINKS.map((l) => {
-              const Icon = l.icon;
-              return (
-                <button
-                  key={l.page}
-                  onClick={() => onOpenLegal(l.page)}
-                  className="group flex items-center gap-2 text-left text-sm text-ink-200 transition hover:text-cyan-neon"
-                >
-                  <Icon className="h-3.5 w-3.5 text-ink-400 transition group-hover:text-cyan-neon" />
-                  {l.label}
-                </button>
-              );
-            })}
-          </nav>
-        </div>
-
-        {/* Ad disclosure */}
-        <div className="flex flex-col gap-3">
-          <h3 className="text-[11px] font-semibold uppercase tracking-widest text-ink-200">
-            Advertising Disclosure
-          </h3>
-          <p className="max-w-xs text-[11px] leading-relaxed text-ink-400">
-            This site displays ads via Google AdSense. We use cookies to personalize content and ads,
-            to provide social media features, and to analyze our traffic. See our Cookie Notice for
-            opt-out options.
-          </p>
-          <div className="flex items-center gap-3 text-ink-400">
+          <p>
+            VICE.DB is an independent, unofficial fan-made database and interactive map for Grand Theft Auto VI and is not affiliated with, endorsed, or sponsored by Rockstar Games or Take-Two Interactive Software, Inc. All game trademarks belong to their respective owners. Select community data is adapted under CC BY-SA 3.0 with attribution to{' '}
             <a
-              href="https://www.google.com/settings/ads"
+              href="https://gta.fandom.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[11px] text-ink-300 underline transition hover:text-cyan-neon"
+              className="text-[#00f0ff] hover:underline"
             >
-              Ad Settings
+              GTA Wiki
             </a>
-            <span className="text-ink-600">|</span>
-            <a
-              href="https://www.aboutads.info/choices"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[11px] text-ink-300 underline transition hover:text-cyan-neon"
-            >
-              Opt Out
-            </a>
-          </div>
+            .
+          </p>
         </div>
-      </div>
 
-      {/* Bottom bar */}
-      <div className="mx-auto mt-6 flex max-w-[1400px] flex-col items-center justify-between gap-2 border-t border-ink-700 pt-5 text-center sm:flex-row sm:text-left">
-        <p className="text-[11px] text-ink-400">
-          &copy; {year} VICE.DB. All rights reserved. Not affiliated with Rockstar Games.
-        </p>
-        <div className="flex items-center gap-3">
-          <span className="text-[11px] text-ink-400">Built for fans, by fans</span>
-          <Github className="h-3.5 w-3.5 text-ink-500" />
+        <div className="flex flex-wrap items-center justify-center gap-3 font-medium shrink-0">
+          <a
+            href="/privacy.html"
+            className="text-[#00f0ff] hover:text-[#ff2a85] transition-colors"
+          >
+            Privacy Policy
+          </a>
+          <span className="text-[#262f45]">|</span>
+          <a
+            href="/terms.html"
+            className="text-[#00f0ff] hover:text-[#ff2a85] transition-colors"
+          >
+            Terms &amp; Disclaimer
+          </a>
+          <span className="text-[#262f45]">|</span>
+          <a
+            href="/cookie.html"
+            className="text-[#00f0ff] hover:text-[#ff2a85] transition-colors"
+          >
+            Cookie Policy
+          </a>
+          <span className="text-[#262f45]">|</span>
+          <a
+            href="/contact.html"
+            className="text-[#00f0ff] hover:text-[#ff2a85] transition-colors"
+          >
+            Contact
+          </a>
         </div>
       </div>
     </footer>
   );
 }
 
-export const Footer = memo(FooterBase);
+export default Footer;
