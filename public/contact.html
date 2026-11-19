@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us - VICE.DB (GTA 6 Database & Map)</title>
+  <style>
+    body { background: #0b0e14; color: #cbd5e1; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; line-height: 1.7; margin: 0; padding: 40px 20px; }
+    .container { max-width: 720px; margin: 0 auto; background: #131822; border: 1px solid #262f45; border-radius: 12px; padding: 36px; }
+    h1 { color: #ffffff; font-size: 28px; margin-top: 0; border-bottom: 1px solid #262f45; padding-bottom: 16px; }
+    .back-btn { display: inline-block; margin-bottom: 20px; color: #00f0ff; font-weight: 600; text-decoration: none; }
+    .back-btn:hover { text-decoration: underline; }
+    .info-box { background: #0b0e14; border: 1px solid #262f45; border-radius: 8px; padding: 16px; margin-bottom: 24px; font-size: 14px; }
+    .info-box strong { color: #00f0ff; }
+    label { display: block; color: #e2e8f0; font-size: 14px; font-weight: 600; margin-bottom: 6px; margin-top: 16px; }
+    input, select, textarea { width: 100%; box-sizing: border-box; background: #0b0e14; border: 1px solid #262f45; border-radius: 8px; padding: 12px; color: #ffffff; font-size: 14px; font-family: inherit; }
+    input:focus, select:focus, textarea:focus { outline: none; border-color: #00f0ff; }
+    button { margin-top: 24px; background: linear-gradient(90deg, #ff2a85, #00f0ff); color: #0b0e14; font-weight: 700; font-size: 15px; border: none; border-radius: 8px; padding: 12px 24px; cursor: pointer; width: 100%; }
+    button:hover { opacity: 0.92; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="/" class="back-btn">← Back to VICE.DB</a>
+    <h1>Contact VICE.DB</h1>
+    <p>Have a new GTA 6 vehicle spawn coordinate, stat correction, bug report, or copyright inquiry? Send us a message below and we will review it within 24–48 hours.</p>
+
+    <div class="info-box">
+      <strong>Direct Email:</strong> contact@gta6vicedb.com<br />
+      <strong>Response Time:</strong> Typically within 1–2 business days
+    </div>
+
+    <form name="contact" method="POST" data-netlify="true">
+      <input type="hidden" name="form-name" value="contact" />
+
+      <label for="name">Your Name or Handle</label>
+      <input type="text" id="name" name="name" placeholder="e.g., ViceCityDriver" required />
+
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" placeholder="you@example.com" required />
+
+      <label for="topic">Inquiry Type</label>
+      <select id="topic" name="topic">
+        <option value="data-tip">Submit Map Pin / Vehicle Spawn Location</option>
+        <option value="correction">Vehicle Spec / Price Correction</option>
+        <option value="dmca">Copyright / DMCA Attribution Request</option>
+        <option value="general">General Feedback / Advertising</option>
+      </select>
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="5" placeholder="Include vehicle name, map coordinates, or relevant URLs..." required></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+</body>
+</html>
