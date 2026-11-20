@@ -6,6 +6,7 @@ import {
   Trophy,
   Zap,
   type LucideIcon,
+  DollarSign,
 } from 'lucide-react';
 import type { PinCategory, VehicleClass } from './types';
 
@@ -49,6 +50,8 @@ export function categoryMeta(cat: PinCategory): { icon: LucideIcon; color: strin
       return { icon: Shirt, color: '#00f0ff', ring: 'shadow-neon-cyan' };
     case 'Activity':
       return { icon: Trophy, color: '#7bed9f', ring: 'shadow-[0_0_14px_rgba(123,237,159,0.5)]' };
+    case 'Money Spot':
+      return { color: '#10b981', icon: DollarSign };
     default:
       return { icon: Car, color: '#ffffff', ring: 'shadow-neon-cyan' };
   }
