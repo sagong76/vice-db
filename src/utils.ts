@@ -51,7 +51,7 @@ export function categoryMeta(cat: PinCategory): { icon: LucideIcon; color: strin
     case 'Activity':
       return { icon: Trophy, color: '#7bed9f', ring: 'shadow-[0_0_14px_rgba(123,237,159,0.5)]' };
     case 'Money Spot':
-      return { color: '#10b981', icon: DollarSign };
+      return { icon: DollarSign, color: '#10b981', ring: 'shadow-[0_0_14px_rgba(16,185,129,0.5)]' };
     default:
       return { icon: Car, color: '#ffffff', ring: 'shadow-neon-cyan' };
   }
