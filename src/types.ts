@@ -16,7 +16,7 @@ export interface Vehicle {
   description: string;
 }
 
-export type PinCategory = 'Free Car' | 'Weapon' | 'Collectible' | 'Property' | 'Activity';
+export type PinCategory = 'Free Car' | 'Weapon' | 'Collectible' | 'Property' | 'Activity' | 'Money Spot';
 
 export interface MapPin {
   pin_id: string;
