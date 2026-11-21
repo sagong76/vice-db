@@ -8,7 +8,13 @@ import {
   type LucideIcon,
   DollarSign,
 } from 'lucide-react';
-import type { PinCategory, VehicleClass } from './types';
+import type { PinCategory, Vehicle, VehicleClass } from './types';
+
+/** Sheet names sometimes already include the manufacturer ("Pegassi Zorrusso"). */
+export function displayName(v: Pick<Vehicle, 'manufacturer' | 'name'>): string {
+  if (!v.manufacturer || v.name.toLowerCase().startsWith(v.manufacturer.toLowerCase())) return v.name;
+  return `${v.manufacturer} ${v.name}`;
+}
 
 export function formatPrice(price: number): string {
   if (price >= 1000) {

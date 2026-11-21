@@ -1,16 +1,24 @@
 import { memo } from 'react';
 import { Gauge, MapPin, MapPinned, Zap } from 'lucide-react';
 import type { Vehicle } from '../types';
-import { classColor, formatPrice } from '../utils';
+import { classColor, displayName, formatPrice } from '../utils';
+import { isPlainClick, vehiclePath } from '../router';
 import { StatBar } from './StatBar';
+import { VehicleImage } from './VehicleImage';
 
 interface VehicleCardProps {
   vehicle: Vehicle;
-  onOpenSpecs: (id: string) => void;
-  onLocate: (pinId: string) => void;
+  navigate: (path: string) => void;
 }
 
-function VehicleCardBase({ vehicle, onOpenSpecs, onLocate }: VehicleCardProps) {
+function VehicleCardBase({ vehicle, navigate }: VehicleCardProps) {
+  const go = (path: string) => (e: React.MouseEvent) => {
+    if (!isPlainClick(e)) return;
+    e.preventDefault();
+    navigate(path);
+  };
+  const href = vehiclePath(vehicle.id);
+  const name = displayName(vehicle);
   const colors = classColor(vehicle.class);
   const isFree = vehicle.free_spawn.toLowerCase() === 'yes';
   const hasPin = !!vehicle.pin_id;
@@ -19,16 +27,10 @@ function VehicleCardBase({ vehicle, onOpenSpecs, onLocate }: VehicleCardProps) {
     <article className="group flex flex-col overflow-hidden rounded-xl border border-ink-600 bg-ink-800 shadow-card transition hover:border-ink-500 hover:shadow-neon-cyan">
       {/* Thumbnail */}
       <div className="relative aspect-video w-full overflow-hidden bg-ink-850">
-        <img
-          src={vehicle.image_url}
-          alt={`${vehicle.manufacturer} ${vehicle.name} - GTA 6 vehicle inspired by ${vehicle.real_car}`}
-          loading="lazy"
-          className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-          onError={(e) => {
-            (e.currentTarget as HTMLImageElement).style.opacity = '0.2';
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink-800 via-transparent to-transparent" />
+        <a href={href} onClick={go(href)} tabIndex={-1} aria-hidden="true" className="block h-full w-full">
+          <VehicleImage vehicle={vehicle} size="card" className="transition duration-500 group-hover:scale-105" />
+        </a>
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink-800 via-transparent to-transparent" />
         {/* Badges */}
         <div className="absolute left-2 top-2 flex gap-1.5">
           <span className={`rounded-md border ${colors.border} ${colors.bg} px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider ${colors.text}`}>
@@ -45,7 +47,9 @@ function VehicleCardBase({ vehicle, onOpenSpecs, onLocate }: VehicleCardProps) {
       {/* Body */}
       <div className="flex flex-1 flex-col p-3.5">
         <h3 className="font-display text-lg font-bold leading-tight text-white">
-          {vehicle.manufacturer} {vehicle.name}
+          <a href={href} onClick={go(href)} className="hover:text-pink-neon">
+            {name}
+          </a>
         </h3>
         <p className="mt-0.5 text-xs text-ink-200">
           Real-life: <span className="text-ink-100">{vehicle.real_car}</span>
@@ -78,25 +82,27 @@ function VehicleCardBase({ vehicle, onOpenSpecs, onLocate }: VehicleCardProps) {
         {/* Actions */}
         <div className="mt-3 flex gap-2">
           {hasPin ? (
-            <button
-              onClick={() => onLocate(vehicle.pin_id)}
+            <a
+              href={`/?pin=${vehicle.pin_id}`}
+              onClick={go(`/?pin=${vehicle.pin_id}`)}
               className="flex flex-1 items-center justify-center gap-1.5 rounded-lg border border-ink-600 bg-ink-850 px-2 py-2 text-xs font-semibold text-ink-100 transition hover:border-cyan-neon/50 hover:text-cyan-neon"
             >
               <MapPinned className="h-3.5 w-3.5" />
               Map Location
-            </button>
+            </a>
           ) : (
             <span className="flex flex-1 items-center justify-center gap-1.5 rounded-lg border border-dashed border-ink-700 px-2 py-2 text-xs text-ink-300">
               <MapPin className="h-3.5 w-3.5" />
               No free spawn
             </span>
           )}
-          <button
-            onClick={() => onOpenSpecs(vehicle.id)}
+          <a
+            href={href}
+            onClick={go(href)}
             className="flex flex-1 items-center justify-center gap-1 rounded-lg bg-gradient-to-r from-pink-neon to-pink-soft px-2 py-2 text-xs font-bold text-white transition hover:shadow-neon-pink"
           >
             Specs
-          </button>
+          </a>
         </div>
       </div>
     </article>

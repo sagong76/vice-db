@@ -1,14 +1,16 @@
-import { Map, Car, GitCompare, Search, Radio } from 'lucide-react';
+import { Map, Car, GitCompare, Search } from 'lucide-react';
 import { memo } from 'react';
 import type { ViewTab } from '../types';
+import { isPlainClick } from '../router';
 
 interface HeaderProps {
-  activeTab: ViewTab;
+  activeTab: ViewTab | null;
   onTabChange: (tab: ViewTab) => void;
   search: string;
   onSearch: (q: string) => void;
-  usingMock: boolean;
 }
+
+const HREF: Record<ViewTab, string> = { map: '/', vehicles: '/vehicles/', compare: '/compare/' };
 
 const TABS: { id: ViewTab; label: string; icon: typeof Map }[] = [
   { id: 'map', label: 'Interactive Map', icon: Map },
@@ -16,13 +18,19 @@ const TABS: { id: ViewTab; label: string; icon: typeof Map }[] = [
   { id: 'compare', label: 'Compare Cars', icon: GitCompare },
 ];
 
-function HeaderBase({ activeTab, onTabChange, search, onSearch, usingMock }: HeaderProps) {
+function HeaderBase({ activeTab, onTabChange, search, onSearch }: HeaderProps) {
+  const go = (t: ViewTab) => (e: React.MouseEvent) => {
+    if (!isPlainClick(e)) return;
+    e.preventDefault();
+    onTabChange(t);
+  };
   return (
     <header className="sticky top-0 z-40 h-14 border-b border-ink-600 bg-ink-950/90 backdrop-blur-md">
       <div className="mx-auto flex h-full max-w-[1600px] items-center gap-3 px-3 sm:px-5">
         {/* Logo */}
-        <button
-          onClick={() => onTabChange('map')}
+        <a
+          href="/"
+          onClick={go('map')}
           className="flex shrink-0 items-center gap-2 pr-2"
           aria-label="VICE.DB home"
         >
@@ -33,7 +41,7 @@ function HeaderBase({ activeTab, onTabChange, search, onSearch, usingMock }: Hea
           <span className="hidden font-display text-base font-bold tracking-wider text-white sm:block">
             VICE<span className="text-pink-neon">.</span>DB
           </span>
-        </button>
+        </a>
 
         {/* Tabs */}
         <nav className="hidden items-center gap-1 rounded-lg border border-ink-700 bg-ink-850 p-1 md:flex">
@@ -41,9 +49,11 @@ function HeaderBase({ activeTab, onTabChange, search, onSearch, usingMock }: Hea
             const Icon = t.icon;
             const active = activeTab === t.id;
             return (
-              <button
+              <a
                 key={t.id}
-                onClick={() => onTabChange(t.id)}
+                href={HREF[t.id]}
+                onClick={go(t.id)}
+                aria-current={active ? 'page' : undefined}
                 className={`flex items-center gap-1.5 rounded-md px-3 py-1.5 text-sm font-medium transition ${
                   active
                     ? 'bg-gradient-to-r from-pink-neon/20 to-cyan-neon/20 text-white shadow-[inset_0_0_0_1px_rgba(255,42,133,0.4)]'
@@ -52,7 +62,7 @@ function HeaderBase({ activeTab, onTabChange, search, onSearch, usingMock }: Hea
               >
                 <Icon className={`h-4 w-4 ${active ? 'text-pink-neon' : ''}`} />
                 {t.label}
-              </button>
+              </a>
             );
           })}
         </nav>
@@ -70,18 +80,6 @@ function HeaderBase({ activeTab, onTabChange, search, onSearch, usingMock }: Hea
           />
         </div>
 
-        {/* Live status */}
-        <div
-          className="hidden shrink-0 items-center gap-1.5 rounded-md border border-ink-700 bg-ink-850 px-2.5 py-1.5 text-[10px] uppercase tracking-wider lg:flex"
-          title={usingMock ? 'Showing offline dataset' : 'Connected to live data'}
-        >
-          <Radio
-            className={`h-3 w-3 ${usingMock ? 'text-amber-400' : 'text-emerald-400 animate-pulseGlow'}`}
-          />
-          <span className={usingMock ? 'text-amber-400' : 'text-emerald-400'}>
-            {usingMock ? 'Offline' : 'Live'}
-          </span>
-        </div>
       </div>
 
       {/* Mobile tabs */}
@@ -90,16 +88,18 @@ function HeaderBase({ activeTab, onTabChange, search, onSearch, usingMock }: Hea
           const Icon = t.icon;
           const active = activeTab === t.id;
           return (
-            <button
+            <a
               key={t.id}
-              onClick={() => onTabChange(t.id)}
+              href={HREF[t.id]}
+              onClick={go(t.id)}
+              aria-current={active ? 'page' : undefined}
               className={`flex flex-1 items-center justify-center gap-1.5 rounded-md px-2 py-1.5 text-xs font-medium transition ${
                 active ? 'bg-ink-700 text-white' : 'text-ink-200'
               }`}
             >
               <Icon className="h-3.5 w-3.5" />
               {t.label.split(' ')[0]}
-            </button>
+            </a>
           );
         })}
       </nav>

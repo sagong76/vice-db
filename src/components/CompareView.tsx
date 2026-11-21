@@ -1,14 +1,16 @@
 import { useMemo } from 'react';
 import { Crown, GitCompare, X } from 'lucide-react';
 import type { Vehicle } from '../types';
-import { classColor, formatPrice } from '../utils';
+import { classColor, displayName, formatPrice } from '../utils';
+import { vehiclePath } from '../router';
+import { VehicleImage } from './VehicleImage';
 
 interface CompareViewProps {
   vehicles: Vehicle[];
   compareIds: string[];
   onSetSlot: (index: number, id: string) => void;
   onClearSlot: (index: number) => void;
-  onOpenSpecs: (id: string) => void;
+  navigate: (path: string) => void;
 }
 
 const NUMERIC_ROWS: { key: keyof Vehicle; label: string; format: (v: number) => string; max: number }[] = [
@@ -35,7 +37,7 @@ export function CompareView({
   compareIds,
   onSetSlot,
   onClearSlot,
-  onOpenSpecs,
+  navigate,
 }: CompareViewProps) {
   const slots = useMemo(
     () => [0, 1, 2].map((i) => vehicles.find((v) => v.id === compareIds[i]) ?? null),
@@ -70,20 +72,22 @@ export function CompareView({
               </label>
               {v ? (
                 <div className="flex items-center gap-3">
-                  <img
-                    src={v.image_url}
-                    alt={v.name}
-                    className="h-14 w-20 shrink-0 rounded-md object-cover"
-                  />
+                  <div className="h-14 w-20 shrink-0 overflow-hidden rounded-md">
+                    <VehicleImage vehicle={v} size="thumb" />
+                  </div>
                   <div className="min-w-0 flex-1">
-                    <p className="truncate font-display font-bold text-white">{v.manufacturer} {v.name}</p>
+                    <p className="truncate font-display font-bold text-white">{displayName(v)}</p>
                     <p className="truncate text-xs text-ink-200">{v.real_car}</p>
-                    <button
-                      onClick={() => onOpenSpecs(v.id)}
+                    <a
+                      href={vehiclePath(v.id)}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        navigate(vehiclePath(v.id));
+                      }}
                       className="mt-1 text-[11px] font-medium text-pink-neon hover:underline"
                     >
                       View specs
-                    </button>
+                    </a>
                   </div>
                   <button
                     onClick={() => onClearSlot(i)}
@@ -104,7 +108,7 @@ export function CompareView({
                     .filter((vv) => !compareIds.includes(vv.id))
                     .map((vv) => (
                       <option key={vv.id} value={vv.id}>
-                        {vv.manufacturer} {vv.name} ({vv.class})
+                        {displayName(vv)} ({vv.class})
                       </option>
                     ))}
                 </select>
@@ -131,12 +135,12 @@ export function CompareView({
               return (
                 <div key={v.id} className="border-r border-ink-600 p-3 last:border-r-0">
                   <div className="relative mb-2 aspect-video overflow-hidden rounded-md bg-ink-900">
-                    <img src={v.image_url} alt={v.name} className="h-full w-full object-cover" />
+                    <VehicleImage vehicle={v} size="thumb" />
                     <span className={`absolute left-1 top-1 rounded border ${colors.border} ${colors.bg} px-1.5 py-0.5 text-[9px] font-semibold uppercase ${colors.text}`}>
                       {v.class}
                     </span>
                   </div>
-                  <p className="truncate font-display text-sm font-bold text-white">{v.manufacturer} {v.name}</p>
+                  <p className="truncate font-display text-sm font-bold text-white">{displayName(v)}</p>
                 </div>
               );
             })}

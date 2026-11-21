@@ -1,4 +1,4 @@
-export type VehicleClass = 'Super' | 'Sports' | 'Muscle' | 'Boat' | 'SUV' | 'Sedan' | 'Motorcycle';
+export type VehicleClass = string;
 
 export interface Vehicle {
   id: string;
@@ -12,8 +12,14 @@ export interface Vehicle {
   handling: number; // 0-100
   free_spawn: 'Yes' | 'No' | string;
   pin_id: string;
-  image_url: string;
+  /** Local screenshot path (/images/vehicles/<id>.webp) or null when none exists yet. */
+  image: string | null;
+  image_credit: string;
   description: string;
+  /** true only when confirmed in-game or from 2+ reliable sources. */
+  verified: boolean;
+  source_url: string;
+  updated: string;
 }
 
 export type PinCategory = 'Free Car' | 'Weapon' | 'Collectible' | 'Property' | 'Activity' | 'Money Spot';
@@ -27,9 +33,17 @@ export interface MapPin {
   map_y: number; // percentage 0-100
   description: string;
   linked_car_id: string;
+  verified: boolean;
 }
 
 export type ViewTab = 'map' | 'vehicles' | 'compare';
+
+export type Route =
+  | { name: 'map' }
+  | { name: 'vehicles' }
+  | { name: 'compare' }
+  | { name: 'vehicle'; id: string }
+  | { name: 'notfound' };
 
 export interface FoundState {
   [pinId: string]: boolean;
