@@ -1,0 +1,71 @@
+name: Daily GTA 6 updates
+
+on:
+  schedule:
+    - cron: '17 20 * * *' # 05:17 KST every day
+  workflow_dispatch: {}
+  push: # TEMP: test run on the setup branch, removed before merge
+    branches: [daily-updates]
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: daily-updates
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Restore last run state
+        uses: actions/cache/restore@v4
+        with:
+          path: .update-state
+          key: update-state-${{ github.run_id }}
+          restore-keys: update-state-
+
+      - name: Refresh data from Google Sheet
+        run: node scripts/fetch-data.mjs
+
+      - name: Collect updates
+        id: collect
+        run: node scripts/collect-updates.mjs
+
+      - name: Save state
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: .update-state
+          key: update-state-${{ github.run_id }}
+
+      - name: Post report as an issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh label create daily-update --color 0E8A16 --description "Automated daily GTA 6 update report" --force
+          # Close older open reports so only today's is open.
+          for n in $(gh issue list --label daily-update --state open --json number --jq '.[].number'); do
+            gh issue close "$n" --comment "Superseded by a newer report." >/dev/null
+          done
+          gh issue create --label daily-update \
+            --title "📋 GTA 6 updates $(date -u +%F) (${{ steps.collect.outputs.items }} items)" \
+            --body-file report.md
+
+  # Rebuild the site daily so Google Sheet edits go live without a manual deploy.
+  # Needs repo secret NETLIFY_BUILD_HOOK (Netlify > Build & deploy > Build hooks).
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Netlify build
+        env:
+          HOOK: ${{ secrets.NETLIFY_BUILD_HOOK }}
+        run: |
+          if [ -z "$HOOK" ]; then echo "NETLIFY_BUILD_HOOK not set; skipping"; exit 0; fi
+          curl -fsS -X POST -d '{}' "$HOOK"
