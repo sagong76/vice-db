@@ -28,7 +28,7 @@ interface MapViewProps {
   onClearFocus: () => void;
 }
 
-const CATEGORIES: PinCategory[] = ['Free Car', 'Weapon', 'Collectible', 'Property', 'Activity'];
+const CATEGORIES: PinCategory[] = ['Free Car', 'Weapon', 'Collectible', 'Money Spot', 'Property', 'Activity'];
 
 const MIN_ZOOM = 1;
 const MAX_ZOOM = 4;

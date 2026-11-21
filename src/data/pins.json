@@ -1,0 +1,792 @@
+[
+  {
+    "pin_id": "pin-001",
+    "category": "Free Car",
+    "title": "Pegassi Zorrusso Free Spawn",
+    "region": "Vice Beach",
+    "map_x": "68.5",
+    "map_y": "44.2",
+    "description": "Spawns inside the VIP parking garage behind the Ocean Drive neon hotel between 22:00 and 04:00.",
+    "linked_car_id": "pegassi-zorrusso"
+  },
+  {
+    "pin_id": "pin-002",
+    "category": "Free Car",
+    "title": "Bravado Banshee Street Spawn",
+    "region": "Downtown Vice",
+    "map_x": "61.2",
+    "map_y": "32.8",
+    "description": "Frequently parked at the multi-level Marina showroom lot near Downtown.",
+    "linked_car_id": "bravado-banshee"
+  },
+  {
+    "pin_id": "pin-003",
+    "category": "Free Car",
+    "title": "Declasse Tulip Hideout Spawn",
+    "region": "Port Gellhorn",
+    "map_x": "31.4",
+    "map_y": "48",
+    "description": "Parked next to the abandoned auto repair shop near Port Gellhorn docks.",
+    "linked_car_id": "declasse-tulip"
+  },
+  {
+    "pin_id": "pin-004",
+    "category": "Free Car",
+    "title": "Vortex Airboat Dock",
+    "region": "Grassrivers",
+    "map_x": "28",
+    "map_y": "64.5",
+    "description": "Always docked at the wooden fishing pier deep inside the Grassrivers wetlands.",
+    "linked_car_id": "nagasaki-airboat"
+  },
+  {
+    "pin_id": "pin-005",
+    "category": "Weapon",
+    "title": "Heavy Assault Rifle",
+    "region": "Leonida Keys",
+    "map_x": "52",
+    "map_y": "81.3",
+    "description": "Inside the sunken smuggling boat cabin off the second bridge in Leonida Keys.",
+    "linked_car_id": ""
+  },
+  {
+    "pin_id": "pin-006",
+    "category": "Collectible",
+    "title": "Vice City Neon Figurine #1",
+    "region": "Starfish Island",
+    "map_x": "64",
+    "map_y": "39.5",
+    "description": "On the diving board of the central mansion pool on Starfish Island.",
+    "linked_car_id": ""
+  },
+  {
+    "pin_id": "pin-1",
+    "category": "Free Car",
+    "title": "Pegassi Supercar (Dominion Hotel)",
+    "region": "Vice Beach",
+    "map_x": "68.2",
+    "map_y": "41.2",
+    "description": "Spotted parked along the main thoroughfare near the Dominion Hotel in Vice Beach.",
+    "linked_car_id": "unnamed-pegassi-sports-car"
+  },
+  {
+    "pin_id": "pin-2",
+    "category": "Free Car",
+    "title": "Pegassi Supercar (Boardwalk Hotel)",
+    "region": "Vice Beach",
+    "map_x": "69.1",
+    "map_y": "46.8",
+    "description": "Observed driving along the main avenue past the Boardwalk Hotel in Vice Beach.",
+    "linked_car_id": "unnamed-pegassi-sports-car"
+  },
+  {
+    "pin_id": "pin-007",
+    "category": "Free Car",
+    "title": "Pfister Comet S2 Cabrio Spawn",
+    "region": "Vice Beach",
+    "map_x": "68.8",
+    "map_y": "36.5",
+    "description": "Parked in the valet driveway of the North Beach luxury resort during daytime.",
+    "linked_car_id": "pfister-comet-s2"
+  },
+  {
+    "pin_id": "pin-008",
+    "category": "Free Car",
+    "title": "Invetero Coquette D10 Spawn",
+    "region": "Starfish Island",
+    "map_x": "64.8",
+    "map_y": "40.2",
+    "description": "Parked inside the gated circular driveway of the eastern Starfish Island estate.",
+    "linked_car_id": "invetero-coquette-d10"
+  },
+  {
+    "pin_id": "pin-009",
+    "category": "Free Car",
+    "title": "Pegassi Infernus Classic Spawn",
+    "region": "Vice Beach",
+    "map_x": "68",
+    "map_y": "48.5",
+    "description": "Spawns under the pink neon archway at the South Beach club strip after midnight.",
+    "linked_car_id": "pegassi-infernus-classic"
+  },
+  {
+    "pin_id": "pin-010",
+    "category": "Free Car",
+    "title": "Obey 9F Cabrio Spawn",
+    "region": "Downtown Vice",
+    "map_x": "59.5",
+    "map_y": "34",
+    "description": "Parked outside the glass skyscraper plaza in the Downtown financial district.",
+    "linked_car_id": "obey-9f-cabrio"
+  },
+  {
+    "pin_id": "pin-011",
+    "category": "Free Car",
+    "title": "Ubermacht Cypher Street Meet",
+    "region": "Downtown Vice",
+    "map_x": "58.2",
+    "map_y": "38.4",
+    "description": "Found inside the underground parking structure near the Vice City metro station.",
+    "linked_car_id": "ubermacht-cypher"
+  },
+  {
+    "pin_id": "pin-012",
+    "category": "Free Car",
+    "title": "Annis Elegy RH8 Tuner Spawn",
+    "region": "Downtown Vice",
+    "map_x": "60.4",
+    "map_y": "41",
+    "description": "Spawns behind the neon-lit customs garage near the Downtown expressway ramp.",
+    "linked_car_id": "annis-elegy-rh8"
+  },
+  {
+    "pin_id": "pin-013",
+    "category": "Free Car",
+    "title": "Karin Sultan RS Rally Spawn",
+    "region": "Ambrosia",
+    "map_x": "46.5",
+    "map_y": "29.5",
+    "description": "Parked beside the dirt test track behind the Ambrosia sugar mill.",
+    "linked_car_id": "karin-sultan-rs"
+  },
+  {
+    "pin_id": "pin-014",
+    "category": "Free Car",
+    "title": "Bravado Gauntlet Hellfire Spawn",
+    "region": "Port Gellhorn",
+    "map_x": "29.8",
+    "map_y": "44.5",
+    "description": "Idling at the abandoned drag strip warehouse on the northern edge of Port Gellhorn.",
+    "linked_car_id": "bravado-gauntlet-hellfire"
+  },
+  {
+    "pin_id": "pin-015",
+    "category": "Free Car",
+    "title": "Vapid Dominator GTX Spawn",
+    "region": "Port Gellhorn",
+    "map_x": "33.2",
+    "map_y": "46.2",
+    "description": "Parked in front of the roadside diner along the Port Gellhorn coastal highway.",
+    "linked_car_id": "vapid-dominator-gtx"
+  },
+  {
+    "pin_id": "pin-016",
+    "category": "Free Car",
+    "title": "Imponte Ruiner ZZ-8 Spawn",
+    "region": "Ambrosia",
+    "map_x": "48.2",
+    "map_y": "33.4",
+    "description": "Parked at the gas station intersection on the main highway through Ambrosia.",
+    "linked_car_id": "imponte-ruiner-zz8"
+  },
+  {
+    "pin_id": "pin-017",
+    "category": "Free Car",
+    "title": "Declasse Vamos Drag Spawn",
+    "region": "Port Gellhorn",
+    "map_x": "30.5",
+    "map_y": "51.2",
+    "description": "Found inside the open shipping container yard at Port Gellhorn South Docks.",
+    "linked_car_id": "declasse-vamos"
+  },
+  {
+    "pin_id": "pin-018",
+    "category": "Free Car",
+    "title": "Declasse Impaler LX Crew Spawn",
+    "region": "Little Haiti",
+    "map_x": "57.5",
+    "map_y": "43.2",
+    "description": "Parked along the mural alley behind the Little Haiti community center.",
+    "linked_car_id": "declasse-impaler-lx"
+  },
+  {
+    "pin_id": "pin-019",
+    "category": "Free Car",
+    "title": "Bravado Greenwood Hideout",
+    "region": "Little Haiti",
+    "map_x": "56.8",
+    "map_y": "45.6",
+    "description": "Always parked in the back lot of the vintage pawn shop in Little Haiti.",
+    "linked_car_id": "bravado-greenwood"
+  },
+  {
+    "pin_id": "pin-020",
+    "category": "Free Car",
+    "title": "Albany Buccaneer Custom Spawn",
+    "region": "Little Cuba",
+    "map_x": "58.5",
+    "map_y": "48.8",
+    "description": "Showcased outside the lowrider garage on Calle Ocho in Little Cuba.",
+    "linked_car_id": "albany-buccaneer"
+  },
+  {
+    "pin_id": "pin-021",
+    "category": "Free Car",
+    "title": "Willard Faction Custom Spawn",
+    "region": "Little Cuba",
+    "map_x": "57.2",
+    "map_y": "50.4",
+    "description": "Parked beside the domino park corner in Little Cuba during evening hours.",
+    "linked_car_id": "willard-faction"
+  },
+  {
+    "pin_id": "pin-022",
+    "category": "Free Car",
+    "title": "Vapid Chino Custom Cruiser",
+    "region": "Vice Beach",
+    "map_x": "67.8",
+    "map_y": "51",
+    "description": "Parked along the palm-lined boardwalk loop at the southern tip of Vice Beach.",
+    "linked_car_id": "vapid-chino"
+  },
+  {
+    "pin_id": "pin-023",
+    "category": "Free Car",
+    "title": "Declasse Tampa Street Spawn",
+    "region": "Ambrosia",
+    "map_x": "44",
+    "map_y": "31.8",
+    "description": "Parked outside the classic hardware store in central Ambrosia.",
+    "linked_car_id": "declasse-tampa"
+  },
+  {
+    "pin_id": "pin-024",
+    "category": "Free Car",
+    "title": "Imponte Phoenix Highway Spawn",
+    "region": "Leonida Keys",
+    "map_x": "55.4",
+    "map_y": "76.5",
+    "description": "Parked at the scenic overlook rest stop before the first Leonida Keys bridge.",
+    "linked_car_id": "imponte-phoenix"
+  },
+  {
+    "pin_id": "pin-025",
+    "category": "Free Car",
+    "title": "Cheval Picador Rural Spawn",
+    "region": "Mount Kalaga",
+    "map_x": "42.5",
+    "map_y": "21",
+    "description": "Parked next to the timber logging cabin at the base of Mount Kalaga.",
+    "linked_car_id": "cheval-picador"
+  },
+  {
+    "pin_id": "pin-026",
+    "category": "Free Car",
+    "title": "Vapid Blade Barn Find",
+    "region": "Ambrosia",
+    "map_x": "51",
+    "map_y": "28",
+    "description": "Hidden inside an open wooden barn northeast of Lake Leonida.",
+    "linked_car_id": "vapid-blade"
+  },
+  {
+    "pin_id": "pin-027",
+    "category": "Free Car",
+    "title": "Pegassi Speeder Marina Slip",
+    "region": "Vice Beach",
+    "map_x": "66.8",
+    "map_y": "43",
+    "description": "Docked at Slip #4 of the Vice Beach Yacht Club facing Starfish Island.",
+    "linked_car_id": "pegassi-speeder"
+  },
+  {
+    "pin_id": "pin-028",
+    "category": "Free Car",
+    "title": "Shitzu Jetmax Smuggler Pier",
+    "region": "Leonida Keys",
+    "map_x": "47.5",
+    "map_y": "84",
+    "description": "Moored at a private wooden cove behind the middle island of Leonida Keys.",
+    "linked_car_id": "shitzu-jetmax"
+  },
+  {
+    "pin_id": "pin-029",
+    "category": "Free Car",
+    "title": "Grotti Cheetah '95 Retro Spawn",
+    "region": "Starfish Island",
+    "map_x": "63.4",
+    "map_y": "38.2",
+    "description": "Parked inside the palm-shaded carport of the western Starfish Island villa.",
+    "linked_car_id": "grotti-cheetah-95"
+  },
+  {
+    "pin_id": "pin-030",
+    "category": "Free Car",
+    "title": "Pfister Growler Track Spawn",
+    "region": "Downtown Vice",
+    "map_x": "60.8",
+    "map_y": "30.2",
+    "description": "Parked at the rooftop level of the North Downtown parking deck.",
+    "linked_car_id": "pfister-growler"
+  },
+  {
+    "pin_id": "pin-031",
+    "category": "Free Car",
+    "title": "Pfister Comet Retro Custom",
+    "region": "Vice Beach",
+    "map_x": "68.4",
+    "map_y": "39",
+    "description": "Parked under the neon palm sign outside the Ocean Drive retro arcade.",
+    "linked_car_id": "pfister-comet-retro"
+  },
+  {
+    "pin_id": "pin-032",
+    "category": "Free Car",
+    "title": "Annis Elegy Retro Custom",
+    "region": "Port Gellhorn",
+    "map_x": "32.8",
+    "map_y": "42",
+    "description": "Spawns at the late-night street tuner meetup lot near the Port Gellhorn warehouse district.",
+    "linked_car_id": "annis-elegy-retro"
+  },
+  {
+    "pin_id": "pin-033",
+    "category": "Free Car",
+    "title": "Dinka Sugoi Hatch Spawn",
+    "region": "Little Haiti",
+    "map_x": "59",
+    "map_y": "44.5",
+    "description": "Parked behind the electronics import shop in central Vice City mainland.",
+    "linked_car_id": "dinka-sugoi"
+  },
+  {
+    "pin_id": "pin-034",
+    "category": "Free Car",
+    "title": "Ubermacht Sentinel Classic",
+    "region": "Vice Beach",
+    "map_x": "67.6",
+    "map_y": "33.5",
+    "description": "Parked at the North Beach tennis club parking lot.",
+    "linked_car_id": "ubermacht-sentinel-classic"
+  },
+  {
+    "pin_id": "pin-035",
+    "category": "Free Car",
+    "title": "Bravado Buffalo STX Spawn",
+    "region": "Downtown Vice",
+    "map_x": "61.5",
+    "map_y": "36.2",
+    "description": "Parked in the VIP executive bay beneath the Downtown bank tower.",
+    "linked_car_id": "bravado-buffalo-stx"
+  },
+  {
+    "pin_id": "pin-036",
+    "category": "Free Car",
+    "title": "Vapid Dominator ASP Spawn",
+    "region": "Port Gellhorn",
+    "map_x": "34.5",
+    "map_y": "49.5",
+    "description": "Parked outside the custom performance muffler shop in Port Gellhorn.",
+    "linked_car_id": "vapid-dominator-asp"
+  },
+  {
+    "pin_id": "pin-037",
+    "category": "Free Car",
+    "title": "Vapid Ganado (Jason Safehouse)",
+    "region": "Port Gellhorn",
+    "map_x": "35.8",
+    "map_y": "45",
+    "description": "Parked in the gravel driveway outside Jason's motel safehouse near Port Gellhorn.",
+    "linked_car_id": "vapid-ganado"
+  },
+  {
+    "pin_id": "pin-038",
+    "category": "Free Car",
+    "title": "Vapid Stanier '55 Vintage Spawn",
+    "region": "Little Cuba",
+    "map_x": "59.8",
+    "map_y": "49.5",
+    "description": "Parked in front of the historic bakery on the main boulevard of Little Cuba.",
+    "linked_car_id": "vapid-stanier-55"
+  },
+  {
+    "pin_id": "pin-039",
+    "category": "Free Car",
+    "title": "Benefactor Schafter V12 Spawn",
+    "region": "Downtown Vice",
+    "map_x": "62",
+    "map_y": "35",
+    "description": "Parked at the bayside heliport VIP lounge in Downtown Vice.",
+    "linked_car_id": "benefactor-schafter-v12"
+  },
+  {
+    "pin_id": "pin-040",
+    "category": "Free Car",
+    "title": "Gallivanter Baller II SUV Spawn",
+    "region": "Starfish Island",
+    "map_x": "65.2",
+    "map_y": "39",
+    "description": "Parked outside the security guardhouse at the entrance to Starfish Island.",
+    "linked_car_id": "gallivanter-baller-ii"
+  },
+  {
+    "pin_id": "pin-041",
+    "category": "Free Car",
+    "title": "Albany Cavalcade XL Spawn",
+    "region": "Vice Beach",
+    "map_x": "68.9",
+    "map_y": "42.5",
+    "description": "Parked outside the VIP nightclub entrance on Ocean Drive.",
+    "linked_car_id": "albany-cavalcade-xl"
+  },
+  {
+    "pin_id": "pin-042",
+    "category": "Free Car",
+    "title": "Benefactor Dubsta 4x4 Spawn",
+    "region": "Mount Kalaga",
+    "map_x": "53.5",
+    "map_y": "19.5",
+    "description": "Parked at the panoramic scenic lodge near the summit of Mount Kalaga.",
+    "linked_car_id": "benefactor-dubsta"
+  },
+  {
+    "pin_id": "pin-043",
+    "category": "Free Car",
+    "title": "Declasse Granger 3600LX Spawn",
+    "region": "Watson Bay",
+    "map_x": "58.5",
+    "map_y": "60.2",
+    "description": "Parked at the ranger station lot overlooking Watson Bay.",
+    "linked_car_id": "declasse-granger-3600lx"
+  },
+  {
+    "pin_id": "pin-044",
+    "category": "Free Car",
+    "title": "Vapid Dominator Buggy '67",
+    "region": "Grassrivers",
+    "map_x": "36.5",
+    "map_y": "61",
+    "description": "Parked at the Mud Club off-road pit on the northern border of Grassrivers.",
+    "linked_car_id": "vapid-dominator-buggy-67"
+  },
+  {
+    "pin_id": "pin-045",
+    "category": "Free Car",
+    "title": "Vapid Caracara 4x4 Spawn",
+    "region": "Mount Kalaga",
+    "map_x": "39",
+    "map_y": "18",
+    "description": "Parked at the trailhead campsite in western Mount Kalaga National Park.",
+    "linked_car_id": "vapid-caracara-4x4"
+  },
+  {
+    "pin_id": "pin-046",
+    "category": "Free Car",
+    "title": "Vapid Riata Classic Dune Spawn",
+    "region": "Leonida Keys",
+    "map_x": "41.2",
+    "map_y": "86.5",
+    "description": "Parked on the sandy beach access trail on the westernmost island of Leonida Keys.",
+    "linked_car_id": "vapid-riata-classic"
+  },
+  {
+    "pin_id": "pin-047",
+    "category": "Free Car",
+    "title": "Declasse Walton L35 Mud Truck",
+    "region": "Grassrivers",
+    "map_x": "32",
+    "map_y": "66.8",
+    "description": "Parked beside the airboat repair shack in deep Grassrivers.",
+    "linked_car_id": "declasse-walton-l35"
+  },
+  {
+    "pin_id": "pin-048",
+    "category": "Free Car",
+    "title": "Dinka Enduro Trail Bike",
+    "region": "Mount Kalaga",
+    "map_x": "48",
+    "map_y": "16.5",
+    "description": "Leaning against the wooden fire watchtower in northern Mount Kalaga.",
+    "linked_car_id": "dinka-enduro"
+  },
+  {
+    "pin_id": "pin-049",
+    "category": "Free Car",
+    "title": "Maibatsu Sanchez Dirt Track",
+    "region": "Ambrosia",
+    "map_x": "42",
+    "map_y": "26.5",
+    "description": "Parked at the motocross dirt jumps north of Ambrosia.",
+    "linked_car_id": "maibatsu-sanchez"
+  },
+  {
+    "pin_id": "pin-050",
+    "category": "Free Car",
+    "title": "Nagasaki Carbon RS Spawn",
+    "region": "Downtown Vice",
+    "map_x": "60",
+    "map_y": "37",
+    "description": "Parked beside the glass atrium of the Downtown tech plaza.",
+    "linked_car_id": "nagasaki-carbon-rs"
+  },
+  {
+    "pin_id": "pin-051",
+    "category": "Free Car",
+    "title": "Shitzu Squalo Speedboat Dock",
+    "region": "Vice Beach",
+    "map_x": "67.2",
+    "map_y": "47.5",
+    "description": "Docked at the Washington Beach public marina pier.",
+    "linked_car_id": "shitzu-squalo"
+  },
+  {
+    "pin_id": "pin-052",
+    "category": "Free Car",
+    "title": "Speedophile Seashark Beach Spawn",
+    "region": "Vice Beach",
+    "map_x": "70.2",
+    "map_y": "45",
+    "description": "Beached near the lifeguard tower on central Ocean Beach.",
+    "linked_car_id": "speedophile-seashark"
+  },
+  {
+    "pin_id": "pin-053",
+    "category": "Free Car",
+    "title": "Crest Kayak Launch Spot",
+    "region": "Grassrivers",
+    "map_x": "43.5",
+    "map_y": "67.5",
+    "description": "Resting on the wooden boardwalk launch inside the Grassrivers mangrove trail.",
+    "linked_car_id": "crest-kayak"
+  },
+  {
+    "pin_id": "pin-054",
+    "category": "Free Car",
+    "title": "Bravado Gauntlet Interceptor",
+    "region": "Downtown Vice",
+    "map_x": "57.8",
+    "map_y": "32.5",
+    "description": "Parked inside the gated motorpool of the Leonida Highway Patrol headquarters.",
+    "linked_car_id": "bravado-gauntlet-interceptor"
+  },
+  {
+    "pin_id": "pin-055",
+    "category": "Weapon",
+    "title": "Tactical SMG Cache",
+    "region": "Port Gellhorn",
+    "map_x": "28.5",
+    "map_y": "46.8",
+    "description": "Inside the locked security office at the end of Pier 3 in Port Gellhorn.",
+    "linked_car_id": ""
+  },
+  {
+    "pin_id": "pin-056",
+    "category": "Weapon",
+    "title": "Combat Shotgun Stash",
+    "region": "Grassrivers",
+    "map_x": "35",
+    "map_y": "68.2",
+    "description": "On the workbench inside the poacher cabin deep in the Grassrivers swamp.",
+    "linked_car_id": ""
+  },
+  {
+    "pin_id": "pin-057",
+    "category": "Weapon",
+    "title": "Heavy Sniper Rifle",
+    "region": "Mount Kalaga",
+    "map_x": "50.5",
+    "map_y": "14.8",
+    "description": "At the top platform of the abandoned radio relay tower on Mount Kalaga.",
+    "linked_car_id": ""
+  },
+  {
+    "pin_id": "pin-058",
+    "category": "Weapon",
+    "title": "Gold Micro SMG",
+    "region": "Starfish Island",
+    "map_x": "64.5",
+    "map_y": "38.8",
+    "description": "On the mahogany desk inside the master study of the central Starfish Island mansion.",
+    "linked_car_id": ""
+  },
+  {
+    "pin_id": "pin-059",
+    "category": "Weapon",
+    "title": "RPG Launcher Crate",
+    "region": "Leonida Keys",
+    "map_x": "38.5",
+    "map_y": "88",
+    "description": "Hidden inside a military surplus crate at the ruined fort on the final Key island.",
+    "linked_car_id": ""
+  },
+  {
+    "pin_id": "pin-060",
+    "category": "Weapon",
+    "title": "Sticky Bomb Stash",
+    "region": "Ambrosia",
+    "map_x": "49.5",
+    "map_y": "35.2",
+    "description": "Behind the industrial boiler inside the Ambrosia refinery complex.",
+    "linked_car_id": ""
+  },
+  {
+    "pin_id": "pin-061",
+    "category": "Weapon",
+    "title": "Machete & Molotov Pack",
+    "region": "Little Haiti",
+    "map_x": "56.2",
+    "map_y": "44",
+    "description": "Inside the backroom storage shed behind the scrap yard in Little Haiti.",
+    "linked_car_id": ""
+  },
+  {
+    "pin_id": "pin-062",
+    "category": "Weapon",
+    "title": "Armor & Carbine Rifle",
+    "region": "Vice Beach",
+    "map_x": "68.6",
+    "map_y": "31.5",
+    "description": "On the rooftop helipad service stairwell of the North Beach luxury condo.",
+    "linked_car_id": ""
+  },
+  {
+    "pin_id": "pin-063",
+    "category": "Collectible",
+    "title": "Vice City Neon Figurine #2",
+    "region": "Vice Beach",
+    "map_x": "69.4",
+    "map_y": "43.5",
+    "description": "Behind the art deco neon flamingo sign atop the Ocean Drive hotel.",
+    "linked_car_id": ""
+  },
+  {
+    "pin_id": "pin-064",
+    "category": "Collectible",
+    "title": "Vice City Neon Figurine #3",
+    "region": "Downtown Vice",
+    "map_x": "61.8",
+    "map_y": "33.8",
+    "description": "On the observation balcony of the Downtown amphitheater overlooking Vice Bay.",
+    "linked_car_id": ""
+  },
+  {
+    "pin_id": "pin-065",
+    "category": "Collectible",
+    "title": "Leonida Myth: Skunk Ape Footprint",
+    "region": "Grassrivers",
+    "map_x": "26.5",
+    "map_y": "61.5",
+    "description": "Cast in dried mud beside a snapped cypress tree in western Grassrivers.",
+    "linked_car_id": ""
+  },
+  {
+    "pin_id": "pin-066",
+    "category": "Collectible",
+    "title": "1986 Tommy Vercetti Suit Easter Egg",
+    "region": "Starfish Island",
+    "map_x": "63.8",
+    "map_y": "40",
+    "description": "Framed inside the walk-in closet of the main Starfish Island estate.",
+    "linked_car_id": ""
+  },
+  {
+    "pin_id": "pin-067",
+    "category": "Collectible",
+    "title": "Sunken UFO Wreckage",
+    "region": "Leonida Keys",
+    "map_x": "58",
+    "map_y": "85.5",
+    "description": "Resting on the ocean floor 40 feet below the reef east of Leonida Keys.",
+    "linked_car_id": ""
+  },
+  {
+    "pin_id": "pin-068",
+    "category": "Collectible",
+    "title": "Lake Leonida Treasure Chest",
+    "region": "Ambrosia",
+    "map_x": "47",
+    "map_y": "44.8",
+    "description": "Submerged beneath the burned wooden fishing boat in central Lake Leonida.",
+    "linked_car_id": ""
+  },
+  {
+    "pin_id": "pin-069",
+    "category": "Collectible",
+    "title": "Abandoned Chainsaw Motel Room",
+    "region": "Vice Beach",
+    "map_x": "67.9",
+    "map_y": "46.2",
+    "description": "Sealed bathroom upstairs at the Ocean Beach motor lodge paying tribute to 1980s Vice City.",
+    "linked_car_id": ""
+  },
+  {
+    "pin_id": "pin-070",
+    "category": "Collectible",
+    "title": "Mount Kalaga Ghost Campfire",
+    "region": "Mount Kalaga",
+    "map_x": "45.2",
+    "map_y": "15.2",
+    "description": "On the misty cliff ledge overlooking the northern valley between 00:00 and 03:00.",
+    "linked_car_id": ""
+  },
+  {
+    "pin_id": "pin-071",
+    "category": "Money Spot",
+    "title": "Three Sheets Liquor Backlot Stash ($2,288+)",
+    "region": "Leonida Keys",
+    "map_x": "53.2",
+    "map_y": "79.2",
+    "description": "After delivering Salty Squid rum to Shirley, climb the side alley fence behind Three Sheets Liquor. Talk to the parrot for the generator clue ($1,354 cash) and crack the storage room safe ($934 cash + key valuable).",
+    "linked_car_id": ""
+  },
+  {
+    "pin_id": "pin-072",
+    "category": "Money Spot",
+    "title": "Grassrivers Smuggler Plane Crash ($1,200 Coke)",
+    "region": "Grassrivers",
+    "map_x": "42",
+    "map_y": "64.5",
+    "description": "Triggered while crossing the Keys bridge; follow the black smoke into Grassrivers wetlands to loot $1,200 in cocaine and a flare gun before the Kingfishers gang arrives.",
+    "linked_car_id": ""
+  },
+  {
+    "pin_id": "pin-073",
+    "category": "Money Spot",
+    "title": "Manatee Motel Tiger Lair (Laird 350 Sniper & $2,200+)",
+    "region": "Grassrivers",
+    "map_x": "38.5",
+    "map_y": "63.2",
+    "description": "Clear the tiger and incoming Kingfishers gang at Manatee Motel near Grassrivers. Loot $462 table cash, $971 from the safe, $800 in cocaine, and the Kingfishers Laird 350 Sniper in the adjacent room.",
+    "linked_car_id": ""
+  },
+  {
+    "pin_id": "pin-074",
+    "category": "Money Spot",
+    "title": "Hamlet Warehouse (Hobo Shotgun & Collectible Card)",
+    "region": "Watson Bay",
+    "map_x": "56.5",
+    "map_y": "56",
+    "description": "Follow the screams into the Hamlet warehouse in South Vice-Dale and take out the gang inside to grab the unique Marabunta Grande Hobo Shotgun, $368 cash, and the Javier Gomez Collectible Card behind the left shelves.",
+    "linked_car_id": ""
+  },
+  {
+    "pin_id": "pin-075",
+    "category": "Money Spot",
+    "title": "Apollo Aggregate Red Warehouse ($6,400+ Motherlode)",
+    "region": "Watson Bay",
+    "map_x": "58.8",
+    "map_y": "53.5",
+    "description": "Combat-free early-game jackpot north of Hamlet with dead gang members inside. Loot cocaine from the indoor/outdoor vans and teddy-bear rooms, plus $400 cash and the Leroy Rook (Silver) Collectible Card from the office safe.",
+    "linked_car_id": ""
+  },
+  {
+    "pin_id": "pin-076",
+    "category": "Weapon",
+    "title": "Key Lento Ammu-Nation Free SM-69 Sniper",
+    "region": "Leonida Keys",
+    "map_x": "51.6",
+    "map_y": "80.5",
+    "description": "Exiting the Key Lento Ammu-Nation frequently triggers hostile thugs outside; defeat them bare-handed and loot a free SM-69 Sniper Rifle from the bed of their pickup truck.",
+    "linked_car_id": ""
+  },
+  {
+    "pin_id": "pin-077",
+    "category": "Money Spot",
+    "title": "Brian's Warehouse (Sell Stolen Goods & Cocaine)",
+    "region": "Leonida Keys",
+    "map_x": "50.8",
+    "map_y": "81.8",
+    "description": "Fence drop-off location in Key Lento where you can sell cocaine stash bags, jewelry, and marked bills collected from early-game farming spots for instant cash.",
+    "linked_car_id": ""
+  }
+]

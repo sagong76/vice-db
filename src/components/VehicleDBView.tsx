@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import { ArrowDownNarrowWide, Check, SlidersHorizontal } from 'lucide-react';
-import type { Vehicle, ViewTab } from '../types';
+import type { Vehicle } from '../types';
+import { CLASSES } from '../data';
 import { classColor } from '../utils';
 import { AdSlot } from './AdSlot';
 import { VehicleCard } from './VehicleCard';
@@ -8,15 +9,13 @@ import { VehicleCard } from './VehicleCard';
 interface VehicleDBViewProps {
   vehicles: Vehicle[];
   globalSearch: string;
-  onOpenSpecs: (id: string) => void;
-  onLocate: (pinId: string) => void;
-  onSwitchTab: (tab: ViewTab) => void;
+  navigate: (path: string) => void;
 }
 
-type ClassFilter = 'All' | 'Super' | 'Sports' | 'Muscle' | 'Boat' | 'Free Spawn Only';
+type ClassFilter = string;
 type SortKey = 'price' | 'speed' | 'name';
 
-const PILLS: ClassFilter[] = ['All', 'Super', 'Sports', 'Muscle', 'Boat', 'Free Spawn Only'];
+const PILLS: ClassFilter[] = ['All', ...CLASSES, 'Free Spawn Only'];
 
 const SORTS: { key: SortKey; label: string }[] = [
   { key: 'price', label: 'Price (High to Low)' },
@@ -27,8 +26,7 @@ const SORTS: { key: SortKey; label: string }[] = [
 export function VehicleDBView({
   vehicles,
   globalSearch,
-  onOpenSpecs,
-  onLocate,
+  navigate,
 }: VehicleDBViewProps) {
   const [filter, setFilter] = useState<ClassFilter>('All');
   const [sort, setSort] = useState<SortKey>('price');
@@ -70,7 +68,9 @@ export function VehicleDBView({
           GTA 6 Vehicle Database
         </h1>
         <p className="mt-1 text-sm text-ink-200">
-          Browse every confirmed vehicle in Leonida with real-life counterparts, performance stats and free-spawn locations.
+          {vehicles.length} GTA 6 vehicles with real-life counterparts, prices, performance ratings and free-spawn
+          locations. Entries marked unverified come from trailers and community reports and are updated once
+          confirmed in-game.
         </p>
       </div>
 
@@ -84,7 +84,7 @@ export function VehicleDBView({
         <div className="flex flex-wrap gap-2">
           {PILLS.map((p) => {
             const active = filter === p;
-            const colors = p !== 'All' && p !== 'Free Spawn Only' ? classColor(p as never) : null;
+            const colors = p !== 'All' && p !== 'Free Spawn Only' ? classColor(p) : null;
             return (
               <button
                 key={p}
@@ -111,7 +111,7 @@ export function VehicleDBView({
             className="flex items-center gap-2 rounded-lg border border-ink-600 bg-ink-850 px-3 py-2 text-sm text-white transition hover:bg-ink-800"
           >
             <SlidersHorizontal className="h-4 w-4 text-cyan-neon" />
-            <span className="hidden sm:inline">{currentSortLabel}</span>
+            <span className="hidden whitespace-nowrap sm:inline">{currentSortLabel}</span>
             <span className="sm:hidden">Sort</span>
             <ArrowDownNarrowWide className="h-3.5 w-3.5 text-ink-300" />
           </button>
@@ -151,8 +151,7 @@ export function VehicleDBView({
             <div key={v.id} className="contents">
               <VehicleCard
                 vehicle={v}
-                onOpenSpecs={onOpenSpecs}
-                onLocate={onLocate}
+                navigate={navigate}
               />
               {(i + 1) % 6 === 0 && i !== filtered.length - 1 && (
                 <div className="col-span-full my-1 flex justify-center">
