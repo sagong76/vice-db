@@ -4,8 +4,6 @@ on:
   schedule:
     - cron: '17 20 * * *' # 05:17 KST every day
   workflow_dispatch: {}
-  push: # TEMP: test run on the setup branch, removed before merge
-    branches: [daily-updates]
 
 permissions:
   contents: read

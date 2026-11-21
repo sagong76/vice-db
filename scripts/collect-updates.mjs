@@ -127,13 +127,15 @@ async function lastEdits(entries) {
       const chunk = list.slice(i, i + 50);
       try {
         const j = await get(
-          `${api}?action=query&format=json&prop=revisions&rvprop=timestamp|comment|user&titles=` +
+          `${api}?action=query&format=json&prop=revisions&rvprop=timestamp|comment|user|flags&titles=` +
             encodeURIComponent(chunk.map((e) => e.title).join('|')),
         );
         for (const p of Object.values(j.query?.pages ?? {})) {
           const rev = p.revisions?.[0];
           const e = chunk.find((x) => x.title === p.title);
-          if (rev && e && now - Date.parse(rev.timestamp) < 2 * DAY) {
+          // Skip minor edits and housekeeping (formatting, typos, links, categories, images).
+          const trivial = 'minor' in (rev ?? {}) || /format|typo|spelling|grammar|link|categor|image|gallery|cleanup|revert|undo/i.test(rev?.comment ?? '');
+          if (rev && e && !trivial && now - Date.parse(rev.timestamp) < 2 * DAY) {
             out.push({ ...e, note: rev.comment ? `"${rev.comment.slice(0, 80)}"` : '' });
           }
         }
