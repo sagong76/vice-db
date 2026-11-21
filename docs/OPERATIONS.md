@@ -43,26 +43,35 @@ images-src/vehicles/<id>.png       ──┼─▶ npm run build ─▶ dist/ (�
 > 한 번에 10~20대씩 몰아서: 차고/딜러에서 연속 촬영 → 이름 변경 → 한 번에 업로드.
 > 금지: 실물 자동차 사진, AI 생성 이미지, 타 사이트·위키 이미지 복사.
 
-## 4. 자동 배포 (시트 수정 → 사이트 반영)
+## 4. 자동 정보 수집 + 자동 배포 (GitHub Actions)
 
-1. Netlify → Site configuration → Build & deploy → **Build hooks** → "Add build hook" (이름: sheet) → URL 복사
-2. 시트 → 확장 프로그램 → Apps Script → 아래 붙여넣기 → URL 교체 → 저장
-   ```js
-   function deploy() {
-     UrlFetchApp.fetch('https://api.netlify.com/build_hooks/여기에_HOOK_ID', { method: 'post' });
-   }
-   ```
-3. Apps Script 왼쪽 "트리거"(시계 아이콘) → 트리거 추가 → `deploy` / 시간 기반 / **일 단위 타이머** (예: 오전 4~5시)
-4. 급할 땐 Apps Script에서 `deploy` 직접 실행.
+`.github/workflows/daily-updates.yml`이 **매일 05:17 (KST)** 실행됩니다.
 
-> 전제: Netlify 사이트가 **GitHub 저장소(sagong76/vice-db)에 연결**되어 있어야 합니다 (Site configuration → Build & deploy → Continuous deployment). Bolt에서 직접 배포 중이라면 GitHub 연결로 바꾸세요. 빌드 명령은 `netlify.toml`이 지정합니다.
+1. 시트 최신 데이터를 받아
+2. GTA Wiki(gta.wiki, Fandom)의 GTA VI 차량 목록·최근 수정, Google News(최근 2일)와 비교해
+3. GitHub 이슈 **"📋 GTA 6 updates 날짜"** 를 만듭니다 (이전 이슈는 자동 닫힘). GitHub 앱 알림을 켜면 폰으로 받습니다.
+   - 🆕 위키에 있는데 DB에 없는 차량 (전날 이후 새로 생긴 것만)
+   - ✏️ DB 차량의 위키 문서가 최근 48시간 내 실질 수정됨 (서식·오타 수정 제외) → 가격·스펙 변경 확인
+   - 📰 최근 2일 뉴스
+   - ❓ DB에 있는데 어느 위키에도 없는 차량 → 가짜/추측 데이터일 가능성, 확인 후 삭제 또는 이름 수정
+4. 같은 시각 Netlify 빌드를 트리거해 **전날 시트 수정이 자동 반영**됩니다.
+
+### 자동 배포 1회 설정
+1. Netlify → Site configuration → Build & deploy → **Build hooks** → Add build hook (이름: daily) → URL 복사
+2. GitHub 저장소 → Settings → Secrets and variables → Actions → New repository secret
+   - Name: `NETLIFY_BUILD_HOOK` / Secret: 복사한 URL
+3. 급할 때: Actions 탭 → "Daily GTA 6 updates" → Run workflow (수집+배포 즉시 실행)
+
+> 위키 내용은 **확인용 링크**로만 씁니다. 위키 문장을 시트에 복사하지 말고, 사실(가격·제조사 등)만 확인해 직접 쓰세요.
 
 ## 5. 하루 루틴 (10~15분)
 
-1. (자동) 정보 수집 리포트 확인 → 새 차량/변경 후보
-2. 시트에 반영, 직접 확인한 항목은 `verified=Yes`, `updated` 날짜 갱신
-3. 플레이할 때 찍은 스크린샷 업로드
-4. 주 1회: Search Console → 색인 생성 현황, 실적(어떤 차량 검색이 들어오는지) → 그 차량 description 보강
+1. 아침에 오늘의 업데이트 이슈 열기
+2. 🆕 항목 중 실제 게임에서 본 차량부터 시트에 추가 (id 규칙: `제조사-모델`, 소문자-하이픈)
+3. ✏️ 항목은 링크 열어 가격·분류 변화만 확인 → 시트 수정, `updated` 날짜 갱신
+4. 직접 확인한 항목 `verified=Yes`, 플레이 중 찍은 스크린샷 업로드
+5. 처리한 항목 체크 → 다음날 05:17 자동 배포
+6. 주 1회: Search Console 실적 확인 → 검색 들어오는 차량의 description 보강
 
 ## 6. 애드센스 신청 체크리스트
 
